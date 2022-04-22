@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  liteobject.app:
+    image: ${DOCKER_REGISTRY-}liteobjectapp
+    build:
+      context: .
+      dockerfile: LiteObject.App/Dockerfile
