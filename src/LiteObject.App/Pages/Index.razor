@@ -1,9 +1,21 @@
 ﻿@page "/"
+@using LiteObject.App.Services
 
 <PageTitle>Index</PageTitle>
 
-<h1>Hello, world!</h1>
+<div>
+    App Version: @appService.Version
+</div>
 
-Welcome to your new app.
+@code {
+    
+    [Inject]
+    private IAppService appService { get; set; } = default!;    
 
-<SurveyPrompt Title="How is Blazor working for you?" />
+    /* protected override async Task OnInitializedAsync()
+    {
+        var v = await Task.FromResult(appService.Version);
+        Console.WriteLine($">>> App Version: {v}");
+    } */
+}
+
