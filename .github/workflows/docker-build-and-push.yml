@@ -1,0 +1,58 @@
+name: "Docker Build and Push"
+on:
+  push:
+    branches:
+      - master
+    paths-ignore:
+      - '**/*.md'
+      - '**/*.gitignore'
+      - '**/*.gitattributes'
+  workflow_dispatch:
+    branches:
+      - master
+    paths-ignore:
+        - '**/*.md'
+        - '**/*.gitignore'
+        - '**/*.gitattributes'
+env:
+  APPLICATION_NAME: "LiteObject-App"
+  NETCORE_VERSION: "6.0.0"
+jobs:
+  test_conn:
+    name: "Test Connection"
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Test SSH Connection"
+        uses: appleboy/ssh-action@master   
+        env:
+          WELCOME: "ssh pipeline"
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_KEY }}
+          port: ${{ secrets.PORT }}
+          script: |            
+            echo $WELCOME 
+            cd /source/repos/LiteObject.Blazor.App
+            git pull origin master
+            git status
+  docker:
+    name: "Build Docker Image"
+    runs-on: ubuntu-latest
+    steps:
+      # Buildx step is not required but recommended using it to be able to build multi-platform images, export cache, etc.
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v1
+      - name: Login to DockerHub
+        uses: docker/login-action@v1 
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}  
+      - name: Build and push
+        uses: docker/build-push-action@v2
+        with:
+          context: "{{defaultContext}}:LiteObject.Blazor.App:src"
+          push: true
+          tags: liteobject/liteobject-app:latest
+ 
+    
