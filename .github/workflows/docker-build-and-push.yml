@@ -17,25 +17,7 @@ on:
 env:
   APPLICATION_NAME: "LiteObject-App"
   NETCORE_VERSION: "6.0.0"
-jobs:
-  test_conn:
-    name: "Test Connection"
-    runs-on: ubuntu-latest
-    steps:
-      - name: "Test SSH Connection"
-        uses: appleboy/ssh-action@master   
-        env:
-          WELCOME: "ssh pipeline"
-        with:
-          host: ${{ secrets.SSH_HOST }}
-          username: ${{ secrets.SSH_USER }}
-          key: ${{ secrets.SSH_KEY }}
-          port: 22
-          script: |            
-            echo $WELCOME 
-            cd /source/repos/LiteObject.Blazor.App
-            git pull origin master
-            git status
+jobs:  
   docker:
     name: "Build Docker Image"
     runs-on: ubuntu-latest
