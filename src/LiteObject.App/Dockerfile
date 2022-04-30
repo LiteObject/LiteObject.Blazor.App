@@ -6,7 +6,7 @@ EXPOSE 80
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
-COPY ["src/LiteObject.App/LiteObject.App.csproj", "LiteObject.App/"]
+COPY ["./src/LiteObject.App/LiteObject.App.csproj", "LiteObject.App/"]
 RUN dotnet restore "LiteObject.App/LiteObject.App.csproj"
 
 WORKDIR "/src/LiteObject.App"
