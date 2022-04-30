@@ -1,5 +1,4 @@
-# LiteObject.Blazor.App
-
+# Blazor app deployment on linux machine using github actions
 
 ## Build "latest" image
 - `docker build -f LiteObject.App/Dockerfile --force-rm -t liteobject/liteobject-app:latest . --label "created-by=mhoque" --no-cache`
