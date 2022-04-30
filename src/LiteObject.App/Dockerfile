@@ -11,10 +11,10 @@ RUN dotnet restore "LiteObject.App/LiteObject.App.csproj"
 
 WORKDIR "/src/LiteObject.App"
 COPY . .
-RUN dotnet build "LiteObject.App.csproj" -c Release -o /app/build
+RUN dotnet build "./src/LiteObject.App/LiteObject.App.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "LiteObject.App.csproj" -c Release -o /app/publish
+RUN dotnet publish "./src/LiteObject.App/LiteObject.App.csproj" -c Release -o /app/publish
 
 FROM base AS final
 WORKDIR /app
