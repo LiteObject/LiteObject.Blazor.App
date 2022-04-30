@@ -30,8 +30,8 @@ jobs:
       - name: Build and push Docker image
         uses: docker/build-push-action@v2
         with:
-          context: ./src/LiteObject.App
-          file: ./src/LiteObject.App/Dockerfile
+          context: ./LiteObject.App
+          file: ./LiteObject.App/Dockerfile
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}

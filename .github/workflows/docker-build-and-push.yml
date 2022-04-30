@@ -23,8 +23,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       -
-        name: Checkout
-        uses: actions/checkout@v2      
+        name: Check out the repo
+        uses: actions/checkout@v3      
       - 
       # Buildx step is not required but recommended using it to be able to build multi-platform images, export cache, etc.
         name: Set up Docker Buildx 
@@ -34,15 +34,18 @@ jobs:
         uses: docker/login-action@v1 
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_TOKEN }}  
-      - 
-        name: TEST
-        run: ls -l -a
+          password: ${{ secrets.DOCKERHUB_TOKEN }}     
+      -
+        name: Extract metadata (tags, labels) for Docker
+        id: meta
+        uses: docker/metadata-action@v2
+        with:
+          images: my-docker-hub-namespace/my-docker-hub-repository   
       - 
         name: Build and push
         uses: docker/build-push-action@v2
         with:
-          context: .
+          context: ../src/D
           push: true
           tags: liteobject/liteobject-app:latest
  
