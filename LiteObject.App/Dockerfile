@@ -7,14 +7,13 @@ EXPOSE 80
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
 COPY ["LiteObject.App/LiteObject.App.csproj", "LiteObject.App/"]
-RUN dotnet restore "./LiteObject.App/LiteObject.App.csproj"
-
-WORKDIR "/LiteObject.App"
+RUN dotnet restore "LiteObject.App/LiteObject.App.csproj"
 COPY . .
-RUN dotnet build "./LiteObject.App/LiteObject.App.csproj" -c Release -o /app/build
+WORKDIR "/src/LiteObject.App"
+RUN dotnet build "LiteObject.App.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "./LiteObject.App/LiteObject.App.csproj" -c Release -o /app/publish
+RUN dotnet publish "LiteObject.App.csproj" -c Release -o /app/publish
 
 FROM base AS final
 WORKDIR /app
