@@ -1,4 +1,4 @@
-name: Docker - Build and Push Image
+name: Build-Push-Deploy-Image
 on:
   push:
     branches:
@@ -7,8 +7,8 @@ on:
     branches:
       - master
 jobs:
-  push_to_registry:
-    name: Push Docker image to Docker Hub
+  build_push_to_registry:
+    name: Build and Push Docker image to Docker Hub
     runs-on: ubuntu-latest
     steps:
       - name: Check out the repo
@@ -35,3 +35,23 @@ jobs:
           #tags: ${{ steps.meta.outputs.tags }}
           # labels: ${{ steps.meta.outputs.labels }}
           tags: liteobject/liteobject-app:latest
+  
+  ssh_conn_to_deploy:
+    name: "SSH - Connect to Deploy"
+    runs-on: ubuntu-latest
+    steps:
+     - name: "Test SSH Connection"
+       uses: appleboy/ssh-action@master   
+       env:
+         WELCOME: "ssh pipeline"
+       with:
+         host: ${{ secrets.SSH_HOST }}
+         username: ${{ secrets.SSH_USER }}
+         key: ${{ secrets.SSH_KEY }}
+         port: 22
+         script: |
+           echo $WELCOME 
+           cd /source/repos/LiteObject.Blazor.App
+           git pull origin master
+           git status
+           ll
