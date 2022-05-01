@@ -9,13 +9,13 @@ FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
 RUN pwd && ls -l
 COPY ["LiteObject.App.csproj", "LiteObject.App/"]
-RUN pwd && ls -l
-RUN pwd && ls -l ./LiteObject.App/
+RUN pwd && ls -l -R LiteObject.App/ -Iwwwroot -Iobj -Ibin -Idebug
+RUN pwd && ls -l ./LiteObject.App/ -Iwwwroot -Iobj -Ibin -Idebug
 RUN dotnet restore "LiteObject.App/LiteObject.App.csproj"
 COPY . .
-RUN pwd && ls -l
+RUN pwd && ls -l -R LiteObject.App/ -Iwwwroot -Iobj -Ibin -Idebug
 WORKDIR "/src/LiteObject.App"
-RUN pwd && ls -l
+RUN pwd && ls -l -R LiteObject.App/ -Iwwwroot -Iobj -Ibin -Idebug
 RUN dotnet build "LiteObject.App.csproj" -c Release -o /app/build
 
 FROM build AS publish
