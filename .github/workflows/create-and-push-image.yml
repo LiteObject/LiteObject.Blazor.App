@@ -33,6 +33,5 @@ jobs:
           context: ./LiteObject.App
           file: ./LiteObject.App/Dockerfile
           push: true
-          tags: liteobject/liteobject-app:test
-          #tags: ${{ steps.meta.outputs.tags }}
-          #labels: ${{ steps.meta.outputs.labels }}       
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
