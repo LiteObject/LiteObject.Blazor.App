@@ -10,11 +10,11 @@ WORKDIR /src
 RUN pwd && ls -l
 COPY ["LiteObject.App.csproj", "LiteObject.App/"]
 RUN pwd && ls -l -R LiteObject.App/ -Iwwwroot -Iobj -Ibin -Idebug
-RUN pwd && ls -l ./LiteObject.App/ -Iwwwroot -Iobj -Ibin -Idebug
+#RUN pwd && ls -l ./LiteObject.App/ -Iwwwroot -Iobj -Ibin -Idebug
 RUN dotnet restore "LiteObject.App/LiteObject.App.csproj"
-COPY . .
-RUN pwd && ls -l -R LiteObject.App/ -Iwwwroot -Iobj -Ibin -Idebug
+RUN pwd && ls -l LiteObject.App/
 WORKDIR "/src/LiteObject.App"
+COPY . .
 RUN pwd && ls -l -R LiteObject.App/ -Iwwwroot -Iobj -Ibin -Idebug
 RUN dotnet build "LiteObject.App.csproj" -c Release -o /app/build
 
