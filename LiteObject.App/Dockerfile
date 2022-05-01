@@ -8,7 +8,7 @@ EXPOSE 80
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
 RUN pwd && ls -l
-COPY ["../LiteObject.App/LiteObject.App.csproj", "LiteObject.App/"]
+COPY ["LiteObject.App.csproj", "LiteObject.App/"]
 RUN pwd && ls -l
 RUN pwd && ls -l ./LiteObject.App/
 RUN dotnet restore "LiteObject.App/LiteObject.App.csproj"
