@@ -35,4 +35,4 @@ jobs:
           push: true
           #tags: ${{ steps.meta.outputs.tags }}
           # labels: ${{ steps.meta.outputs.labels }}
-          tags: liteobject/linode-app:latest
+          tags: liteobject/liteobject-app:latest
