@@ -38,6 +38,7 @@ jobs:
   
   ssh_conn_to_deploy:
     name: "SSH - Connect to Deploy"
+    needs: [build_push_to_registry]
     runs-on: ubuntu-latest
     steps:
      - name: "Test SSH Connection"
@@ -47,10 +48,12 @@ jobs:
        with:
          host: ${{ secrets.SSH_HOST }}
          username: ${{ secrets.SSH_USER }}
+         passphrase: ${{ secrets.SSH_PASSPHRASE }}
          key: ${{ secrets.SSH_KEY }}
          port: 22
          script: |
            echo $WELCOME 
+           whoami
            cd /source/repos/LiteObject.Blazor.App
            git pull origin master
            git status
