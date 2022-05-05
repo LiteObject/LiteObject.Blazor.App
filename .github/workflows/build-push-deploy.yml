@@ -8,7 +8,7 @@ on:
       - master
 jobs:
   build_push_to_registry:
-    name: Build and Push Docker image to Docker Hub
+    name: Docker - Build and Push Docker image
     runs-on: ubuntu-latest
     steps:
       - name: Check out the repo
@@ -33,7 +33,7 @@ jobs:
           file: ./LiteObject.App/Dockerfile
           push: true
           #tags: ${{ steps.meta.outputs.tags }}
-          # labels: ${{ steps.meta.outputs.labels }}
+          #labels: ${{ steps.meta.outputs.labels }}
           tags: liteobject/liteobject-app:latest
   
   ssh_conn_to_deploy:
@@ -54,4 +54,6 @@ jobs:
          script: |
            echo $WELCOME 
            whoami
-           docker ps      
+           docker stop liteobject-app
+           docker run --rm -d -p 5000:80 --name liteobject-app liteobject/liteobject-app:latest --pull=always  
+           docker ps
