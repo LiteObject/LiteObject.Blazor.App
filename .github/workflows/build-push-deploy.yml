@@ -37,7 +37,7 @@ jobs:
           tags: liteobject/liteobject-app:latest
   
   ssh_conn_to_deploy:
-    name: "SSH - Connect to Deploy"
+    name: "SSH - Connect to Server and Deploy"
     needs: [build_push_to_registry]
     runs-on: ubuntu-latest
     steps:
