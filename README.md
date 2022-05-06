@@ -1,7 +1,7 @@
 # Blazor app deployment on linux machine using github actions
 
 ## Build "latest" image
-- `docker build -f LiteObject.App/Dockerfile --force-rm -t liteobject/liteobject-app:latest . --label "created-by=mhoque" --no-cache`
+- `docker build -f LiteObject.App/Dockerfile --force-rm -t liteobject/liteobject-app:latest . --label "created-by=mhoque" --no-cache --progress plain`
 
 ## Push "latest" image
 - `docker push liteobject/liteobject-app:latest`
