@@ -13,7 +13,7 @@ COPY ["LiteObject.App/LiteObject.App.csproj", "LiteObject.App/"]
 RUN pwd && ls -l -R LiteObject.App/ -Iwwwroot -Iobj -Ibin -Idebug
 RUN dotnet restore LiteObject.App/LiteObject.App.csproj
 RUN pwd && ls -l LiteObject.App/
-COPY . . 
+#COPY . . 
 WORKDIR /src/LiteObject.App
 RUN pwd
 ## NOTE: For some reason, COPY .. before WORKDIR "/src/LiteObject.App" does not work with Gitub action build
