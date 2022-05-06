@@ -3,9 +3,11 @@ on:
   push:
     branches:
       - master
+      - main
   workflow_dispatch:
     branches:
       - master
+      - main
 jobs:
   build_push_to_registry:
     name: Docker - Build and Push Docker image
