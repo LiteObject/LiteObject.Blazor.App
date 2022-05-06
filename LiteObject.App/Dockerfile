@@ -3,12 +3,11 @@
 # docker build -f ./LiteObject.App/Dockerfile --force-rm -t liteobject/liteobject-app:test . --label "created-by=mhoque" --no-cache --progress=plain
 FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS base
 WORKDIR /app
-RUN pwd
+RUN pwd && ls -lh /
 EXPOSE 80
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
-RUN pwd && ls -l
 COPY ["LiteObject.App/LiteObject.App.csproj", "LiteObject.App/"]
 RUN pwd && ls -l -R LiteObject.App/ -Iwwwroot -Iobj -Ibin -Idebug
 RUN dotnet restore LiteObject.App/LiteObject.App.csproj
