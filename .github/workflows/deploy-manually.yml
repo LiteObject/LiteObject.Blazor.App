@@ -1,0 +1,29 @@
+name: Build-Push-Deploy-Image
+on:  
+  workflow_dispatch:
+    branches:
+      - master
+      - main
+      - develop
+jobs:  
+  ssh_conn_to_deploy:
+    name: "SSH - Connect to Server and Deploy"
+    needs: [build_push_to_registry]
+    runs-on: ubuntu-latest
+    steps:
+     - name: "Test SSH Connection"
+       uses: appleboy/ssh-action@master   
+       env:
+         WELCOME: "ssh pipeline"
+       with:
+         host: ${{ secrets.SSH_HOST }}
+         username: ${{ secrets.SSH_USER }}
+         passphrase: ${{ secrets.SSH_PASSPHRASE }}
+         key: ${{ secrets.SSH_KEY }}
+         port: 22
+         script: |
+           echo $WELCOME 
+           whoami
+           docker stop liteobject-app
+           docker run --rm -d -p 5000:80 --name liteobject-app liteobject/liteobject-app:latest --pull=always
+           docker ps
