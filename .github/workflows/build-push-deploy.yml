@@ -43,8 +43,9 @@ jobs:
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/liteobject-app:latest
           cache-from: type=registry,ref=${{ secrets.DOCKERHUB_USERNAME }}/liteobject-app:buildcache
           cache-to: type=registry,ref=${{ secrets.DOCKERHUB_USERNAME }}/liteobject-app:buildcache,mode=max
-          script: |
+          script: |            
             IMAGE_CREATED_DATE=$(docker inspect -f '{{ .Created }}' liteobject-app | date)
+            echo "IMAGE_CREATED_DATE: $IMAGE_CREATED_DATE"
   
   ssh_conn_to_deploy:
     name: "SSH - Connect to Server and Deploy"
