@@ -7,8 +7,7 @@ on:
       - develop
 jobs:  
   ssh_conn_to_deploy:
-    name: "SSH - Connect to Server and Deploy"
-    needs: [build_push_to_registry]
+    name: "SSH - Connect to Server and Deploy"    
     runs-on: ubuntu-latest
     steps:
      - name: "Test SSH Connection"
