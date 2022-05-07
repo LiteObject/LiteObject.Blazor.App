@@ -8,13 +8,10 @@ EXPOSE 80
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
 COPY ["LiteObject.App/LiteObject.App.csproj", "LiteObject.App/"]
-RUN pwd && ls -l -R LiteObject.App/ -Iwwwroot -Iobj -Ibin -Idebug
+#RUN pwd && ls -l -R LiteObject.App/ -Iwwwroot -Iobj -Ibin -Idebug
 RUN dotnet restore LiteObject.App/LiteObject.App.csproj
-RUN pwd && ls -l LiteObject.App/
-#COPY . . 
+#RUN pwd && ls -l LiteObject.App/
 WORKDIR /src/LiteObject.App
-## NOTE: For some reason, COPY .. before WORKDIR "/src/LiteObject.App" does not work with Gitub action build
-## However, this causes a problem with the build in local environment. It could be beasue of due to relative path
 COPY . . 
 #RUN ls -l -R -Iwwwroot -Iobj -Ibin -Idebug
 RUN pwd 
