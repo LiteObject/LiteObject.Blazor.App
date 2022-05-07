@@ -1,4 +1,4 @@
-name: Deploy Latest Docker Image Manually
+name: Manually Deploy Latest Docker Image
 on:  
   workflow_dispatch:
     branches:
