@@ -1,4 +1,4 @@
-name: Build-Push-Deploy-Image
+name: Deploy Latest Docker Image Manually
 on:  
   workflow_dispatch:
     branches:
