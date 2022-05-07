@@ -10,13 +10,45 @@
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed orci lectus, suscipit ac risus quis, volutpat faucibus ipsum. Pellentesque sit amet interdum elit. Donec sit amet gravida urna. Sed ultrices ac augue vitae facilisis. Proin sed suscipit lectus. Donec euismod massa sagittis, scelerisque enim nec, vulputate nibh. Proin faucibus pretium lacus sit amet volutpat. In at elit lorem. Vestibulum fringilla ex sit amet metus elementum, a pulvinar ante tempus. Sed tempor bibendum enim quis pharetra. Morbi tempor ipsum et ante sagittis, sit amet tincidunt dolor sollicitudin. Nullam non metus dolor. Aliquam ultricies bibendum ligula sed aliquam. Vivamus aliquet non purus non sodales. Sed augue metus, suscipit id fringilla quis, aliquet at lacus. In semper sed elit sollicitudin congue.
 </p>
 
+<div class="row">
+    <div class="col">
+        <div class="card">
+            <img src="./images/001-git-1.png" class="card-img-top img-thumbnail" alt="github logo">
+            <div class="card-body">
+                 Sed tempor bibendum enim quis pharetra. Morbi tempor ipsum et ante sagittis, sit amet tincidunt dolor sollicitudin. Nullam non metus dolor. Aliquam ultricies bibendum ligula sed aliquam. Vivamus aliquet non purus non sodales. Sed augue metus, suscipit id fringilla quis, aliquet at lacus. In semper sed elit sollicitudin congue.
+            </div>
+        </div>
+    </div>
+    <div class="col">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                <p class="card-text">
+                     Sed tempor bibendum enim quis pharetra. Morbi tempor ipsum et ante sagittis, sit amet tincidunt dolor sollicitudin. Nullam non metus dolor. Aliquam ultricies bibendum ligula sed aliquam. Vivamus aliquet non purus non sodales. Sed augue metus.
+                </p>
+                <a href="#" class="card-link">Card link</a>
+                <a href="#" class="card-link">Another link</a>
+            </div>
+        </div>
+    </div>
+    <div class="col">
+        <div class="card">
+            <img src="./images/002-github.png" class="card-img-top img-thumbnail w-50" alt="github logo">
+            <div class="card-body">
+                 Sed tempor bibendum enim quis pharetra. Morbi tempor ipsum et ante sagittis, sit amet tincidunt dolor sollicitudin. Nullam non metus dolor. Aliquam ultricies bibendum ligula sed aliquam. Vivamus aliquet non purus non sodales. Sed augue metus, suscipit id fringilla quis, aliquet at lacus. In semper sed elit sollicitudin congue.
+            </div>
+        </div>
+    </div>
+</div>
+
 @code {
-    
+
     [Inject]
-    private IAppService appService { get; set; } = default!;    
+    private IAppService appService { get; set; } = default!;
 
     /* protected override async Task OnInitializedAsync()
-    {
+        {
         var v = await Task.FromResult(appService.Version);
         Console.WriteLine($">>> App Version: {v}");
     } */
