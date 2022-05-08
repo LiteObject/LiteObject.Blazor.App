@@ -1,4 +1,4 @@
-﻿<nav class="navbar navbar-expand-md navbar-dark bg-teal">    
+﻿<nav class="navbar navbar-expand-md navbar-dark bg-teal">
     <div class="container-fluid px-5">
         <a class="navbar-brand" href="">Lite Object</a>
         <button class="navbar-toggler @NavButtonCssClass" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
@@ -8,26 +8,26 @@
         <div class="collapse navbar-collapse @NavBarCssClass" id="navbarCollapse" @onclick="ToggleNavMenu">
             <ul class="navbar-nav ms-auto mb-2 mb-md-0">
                 <li class="nav-item">
-                    <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
+                    <NavLink class="nav-link" href="" Match="NavLinkMatch.All" @onclick="@(e => NavLinkClicked("/"))">
                         <span class="oi oi-home" aria-hidden="true"></span> Home
                     </NavLink>
                 </li>
                 <li class="nav-item">
-                    <NavLink class="nav-link" href="counter">
+                    <NavLink class="nav-link" href="counter" @onclick="@(e => NavLinkClicked("counter"))">
                         <span class="oi oi-plus" aria-hidden="true"></span> Counter
                     </NavLink>
                 </li>
                 <li class="nav-item">
-                    <NavLink class="nav-link" href="fetchdata">
+                    <NavLink class="nav-link" href="fetchdata" @onclick="@(e => NavLinkClicked("fetchdata"))">
                         <span class="oi oi-list-rich" aria-hidden="true"></span> Fetch data
                     </NavLink>
                 </li>
                 <li class="nav-item">
-                    <NavLink class="nav-link" href="about">
+                    <NavLink class="nav-link" href="about" @onclick="@(e => NavLinkClicked("about"))">
                         <span class="oi oi-info" aria-hidden="true"></span> About
                     </NavLink>
                 </li>
-            </ul>            
+            </ul>
         </div>
     </div>
 </nav>
@@ -40,5 +40,14 @@
     private void ToggleNavMenu()
     {
         collapseNavMenu = !collapseNavMenu;
+    }
+
+    [Parameter]
+    public EventCallback<string> OnNavLinkClick { get; set; }
+
+    private async Task NavLinkClicked(string link)
+    {
+        Console.WriteLine($"NavMenu Component. NavLink \"{link}\" has been clicked.");
+        await OnNavLinkClick.InvokeAsync(link);
     }
 }
