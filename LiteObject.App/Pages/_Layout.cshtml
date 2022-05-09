@@ -29,5 +29,18 @@
     </div>
 
     <script src="_framework/blazor.server.js"></script>
+    <script>
+        /* https://docs.microsoft.com/en-us/aspnet/core/blazor/fundamentals/signalr?view=aspnetcore-6.0#modify-the-reconnection-handler-blazor-server */
+        Blazor.start({
+            reconnectionHandler: {
+                onConnectionDown: (options, error) => console.error(error),
+                onConnectionUp: () => console.log(">>> Up, up, and away!"),
+                reconnectionOptions: {
+                  maxRetries: 5,
+                  retryIntervalMilliseconds: 3000
+                }
+            }
+        });
+    </script>
 </body>
 </html>
