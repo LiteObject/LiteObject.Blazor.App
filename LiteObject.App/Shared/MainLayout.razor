@@ -5,7 +5,7 @@
 @*<PageTitle>LiteObject.App</PageTitle>*@
 
 <NavMenu OnNavLinkClick="@OnNavLinkClick" />
-@if (showHeaderAndFooter)
+@if (isLandingPage)
 {
     @Body    
 }
@@ -18,7 +18,7 @@ else
 
 @code {
 
-    private bool showHeaderAndFooter = true;
+    private bool isLandingPage = true;
 
     private void OnNavLinkClick(string link)
     {
@@ -26,11 +26,11 @@ else
 
         if (link.Equals("/"))
         {
-            showHeaderAndFooter = true;
+            isLandingPage = true;
         }
         else
         {
-            showHeaderAndFooter = false;
+            isLandingPage = false;
         }
     }
 
