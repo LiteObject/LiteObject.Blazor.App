@@ -12,9 +12,8 @@
                         A generic collection of software engineers
                     </h1>
                     <p class="lead text-white-50 mb-4">
-                        Quickly design and customize responsive mobile-first sites with Bootstrap, 
+                        Quickly design and customize responsive mobile-first sites with Bootstrap,
                         the world’s most popular front-end open source toolkit!
-                        (@AppService.Version)
                     </p>
                     <div class="d-grid gap-3 d-sm-flex justify-content-sm-center">
                         <a class="btn btn-secondary btn-lg px-4 me-sm-3" href="#features">Get Started</a>
@@ -30,8 +29,8 @@
         <div class="row gx-5">
             <div class="col-lg-4 mb-5 mb-lg-0">
                 @*<div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-collection"></i></div>*@
-                <h2 class="h4 fw-bolder">Featured title</h2>
-                <p>Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words.</p>
+                <h2 class="h4 fw-bolder">Coding Solution</h2>
+                <p></p>
                 <a class="text-decoration-none" href="#!">
                     Call to action
                     <i class="bi bi-arrow-right"></i>
@@ -39,8 +38,8 @@
             </div>
             <div class="col-lg-4 mb-5 mb-lg-0">
                 @*<div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-building"></i></div>*@
-                <h2 class="h4 fw-bolder">Featured title</h2>
-                <p>Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words.</p>
+                <h2 class="h4 fw-bolder">DevOps Solution</h2>
+                <p>We can help you migrate your application to Cloud.</p>                
                 <a class="text-decoration-none" href="#!">
                     Call to action
                     <i class="bi bi-arrow-right"></i>
@@ -48,8 +47,10 @@
             </div>
             <div class="col-lg-4">
                 @*<div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-toggles2"></i></div>*@
-                <h2 class="h4 fw-bolder">Featured title</h2>
-                <p>Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words.</p>
+                <h2 class="h4 fw-bolder">Automation Solution</h2>
+                <p>
+                    If you need to automate some process, but not sure where to start, we can help you.
+                </p>
                 <a class="text-decoration-none" href="#!">
                     Call to action
                     <i class="bi bi-arrow-right"></i>
@@ -251,7 +252,10 @@
 </section>
 <LiteObject.App.components.ContactForm></LiteObject.App.components.ContactForm>
 <footer class="py-5 bg-dark">
-    <div class="container px-5"><p class="m-0 text-center text-white">Copyright © LiteObject 2022</p></div>
+    <div class="container px-5">
+        <p>App Version: @AppService.Version</p>
+        <p class="m-0 text-center text-white">Copyright © LiteObject 2022</p>
+    </div>
 </footer>
 @code {
 
