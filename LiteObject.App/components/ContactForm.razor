@@ -1,4 +1,7 @@
-﻿<section class="bg-light py-5">
+﻿@using LiteObject.App.Library.Comm
+@inject ICommunication Communication;
+
+<section class="bg-light py-5">
     <div class="container px-5 my-5 px-5">
         <div class="text-center mb-5">
             @*<div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-envelope"></i></div>*@
@@ -58,12 +61,15 @@
                     <!-- an error submitting the form-->
                     <div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3">Error sending message!</div></div>
                     <!-- Submit Button-->
-                    <div class="d-grid"><button class="btn bg-teal btn-lg" id="submitButton" type="submit">Submit</button></div>
+                    <div class="d-grid"><button class="btn bg-teal btn-lg" id="submitButton" type="submit" @onclick="SendMailAsync">Submit</button></div>
                 </form>
             </div>
         </div>
     </div>
 </section>
 @code {
-
+    private async Task SendMailAsync()
+    {
+        await Communication.SendEmailAsync("TEST Mail", "Hello World");
+    }
 }
