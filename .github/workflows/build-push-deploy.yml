@@ -4,10 +4,12 @@ on:
     branches:
       - master
       - main
+      - develop
   workflow_dispatch:
     branches:
       - master
       - main
+      - develop      
 jobs:
   # https://docs.docker.com/ci-cd/github-actions/
   build_push_to_registry:

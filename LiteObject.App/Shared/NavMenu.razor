@@ -1,33 +1,33 @@
-﻿<nav class="navbar navbar-expand-md navbar-dark bg-teal mb-4">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="">Lite Object</a>
+﻿<nav class="navbar navbar-expand-md navbar-dark bg-teal fixed-top">
+    <div class="container-fluid px-5">
+        <a class="navbar-brand" href="">LiteObject</a>
         <button class="navbar-toggler @NavButtonCssClass" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
                 aria-controls="navbarCollapse" aria-label="Toggle navigation" @onclick="ToggleNavMenu">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse @NavBarCssClass" id="navbarCollapse" @onclick="ToggleNavMenu">
-            <ul class="navbar-nav me-auto mb-2 mb-md-0">
+            <ul class="navbar-nav ms-auto mb-2 mb-md-0">
                 <li class="nav-item">
-                    <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
+                    <NavLink class="nav-link" href="" Match="NavLinkMatch.All" @onclick="@(e => NavLinkClicked("/"))">
                         <span class="oi oi-home" aria-hidden="true"></span> Home
                     </NavLink>
                 </li>
                 <li class="nav-item">
-                    <NavLink class="nav-link" href="counter">
-                        <span class="oi oi-plus" aria-hidden="true"></span> Counter
+                    <NavLink class="nav-link" href="https://github.com/LiteObject" target="_blank">
+                        <span class="bi bi-github" aria-hidden="true"></span> Code Repos
                     </NavLink>
                 </li>
                 <li class="nav-item">
-                    <NavLink class="nav-link" href="fetchdata">
+                    <NavLink class="nav-link" href="fetchdata" @onclick="@(e => NavLinkClicked("fetchdata"))">
                         <span class="oi oi-list-rich" aria-hidden="true"></span> Fetch data
                     </NavLink>
                 </li>
                 <li class="nav-item">
-                    <NavLink class="nav-link" href="about">
-                        <span class="oi oi-info" aria-hidden="true"></span> About
+                    <NavLink class="nav-link" href="about" @onclick="@(e => NavLinkClicked("about"))">
+                        <span class="bi bi-info-circle-fill" aria-hidden="true"></span> About
                     </NavLink>
                 </li>
-            </ul>            
+            </ul>
         </div>
     </div>
 </nav>
@@ -40,5 +40,14 @@
     private void ToggleNavMenu()
     {
         collapseNavMenu = !collapseNavMenu;
+    }
+
+    [Parameter]
+    public EventCallback<string> OnNavLinkClick { get; set; }
+
+    private async Task NavLinkClicked(string link)
+    {
+        Console.WriteLine($"NavMenu Component. NavLink \"{link}\" has been clicked.");
+        await OnNavLinkClick.InvokeAsync(link);
     }
 }

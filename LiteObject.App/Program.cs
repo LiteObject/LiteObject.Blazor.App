@@ -1,4 +1,5 @@
 using LiteObject.App.Data;
+using LiteObject.App.Library.Comm;
 using LiteObject.App.Services;
 using Microsoft.AspNetCore.HttpOverrides;
 
@@ -9,6 +10,7 @@ builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
 builder.Services.AddSingleton<WeatherForecastService>();
 builder.Services.AddTransient<IAppService, AppService>();
+builder.Services.AddSingleton<ICommunication, LiteMail>();
 
 var app = builder.Build();
 
