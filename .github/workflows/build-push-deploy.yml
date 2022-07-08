@@ -58,6 +58,7 @@ jobs:
        uses: appleboy/ssh-action@master   
        env:
          WELCOME: "ssh pipeline"
+         LOGIN: ${{ secrets.MAIL_SERVER_LOGIN }}
        with:
          host: ${{ secrets.SSH_HOST }}
          username: ${{ secrets.SSH_USER }}
@@ -66,6 +67,7 @@ jobs:
          port: 22
          script: |
            echo HelloWorld
+           echo "LOGIN=$LOGIN"
            CREATED_ON=$(date)
            echo "CREATED_ON=$CREATED_ON"
            whoami
