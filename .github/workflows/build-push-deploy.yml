@@ -65,7 +65,7 @@ jobs:
          key: ${{ secrets.SSH_KEY }}
          port: 22
          script: |
-           echo $WELCOME 
+           echo HelloWorld
            whoami
            docker stop liteobject-app
            docker rmi liteobject/liteobject-app           
