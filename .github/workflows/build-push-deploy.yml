@@ -58,7 +58,7 @@ jobs:
        uses: appleboy/ssh-action@master   
        env:
          WELCOME: "ssh pipeline"
-         LOGIN: ${{ secrets.MAIL_SERVER_LOGIN }}
+         LOGIN: '${{ secrets.MAIL_SERVER_LOGIN }}'
        with:
          host: ${{ secrets.SSH_HOST }}
          username: ${{ secrets.SSH_USER }}
