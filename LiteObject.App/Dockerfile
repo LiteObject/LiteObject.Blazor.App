@@ -5,8 +5,9 @@ FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS base
 WORKDIR /app
 EXPOSE 80
 
-ARG CREATED_ON=${CREATED_ON}
-ENV CREATED_ON=${CREATED_ON}
+# ARG CREATED_ON=${CREATED_ON}
+# ENV CREATED_ON=${CREATED_ON}
+# ENV MY_VAR=Something
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
