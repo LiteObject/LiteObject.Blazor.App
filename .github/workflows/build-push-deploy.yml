@@ -74,7 +74,7 @@ jobs:
            whoami
            docker stop liteobject-app
            docker rmi liteobject/liteobject-app           
-           docker run --rm -d -p 5000:80 --name liteobject-app liteobject/liteobject-app:latest --pull=always --env CREATED_ON=TODAY --env MY_DATE=$(date) -e PASSWORD
+           docker run --rm -d -p 5000:80 --name liteobject-app liteobject/liteobject-app:latest --pull=always --env ENV_CREATED_ON=$(date)
            docker exec -it liteobject-app bash
            export IMAGE_CREATED_ON=$(date)
            printenv
