@@ -5,6 +5,9 @@ FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS base
 WORKDIR /app
 EXPOSE 80
 
+ARG ARG_IMAGE_CREATED_ON="arg: not available"
+ENV ENV_CONTAINER_CREATED_ON="env: not available"
+
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
 COPY ["LiteObject.App/LiteObject.App.csproj", "LiteObject.App/"]

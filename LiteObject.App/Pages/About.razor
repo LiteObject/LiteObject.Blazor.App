@@ -18,5 +18,5 @@
 
 @code {
     // IMAGE_CREATED_ON=$(docker inspect -f '{{ .Created }}' liteobject-app | date)
-    string imageCreatedDate = Environment.GetEnvironmentVariable("IMAGE_CREATED_ON") ?? "Unknown";
+    string imageCreatedDate = Environment.GetEnvironmentVariable("ENV_CONTAINER_CREATED_ON") ?? "Unknown";
 }

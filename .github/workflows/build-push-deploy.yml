@@ -58,6 +58,7 @@ jobs:
        uses: appleboy/ssh-action@master   
        env:
          WELCOME: "ssh pipeline"
+         LOGIN: '${{ secrets.MAIL_SERVER_LOGIN }}'
        with:
          host: ${{ secrets.SSH_HOST }}
          username: ${{ secrets.SSH_USER }}
@@ -65,11 +66,14 @@ jobs:
          key: ${{ secrets.SSH_KEY }}
          port: 22
          script: |
-           echo $WELCOME 
-           whoami
+           echo HelloWorld
+           echo $WELCOME
+           echo "LOGIN=$LOGIN"
+           CREATED_ON=$(date)
+           echo "CREATED_ON=$CREATED_ON"           
            docker stop liteobject-app
            docker rmi liteobject/liteobject-app           
-           docker run --rm -d -p 5000:80 --name liteobject-app liteobject/liteobject-app:latest --pull=always -e IMAGE_CREATED_ON=$(date)
+           docker container run --rm -d -p 5000:80 --name liteobject-app liteobject/liteobject-app:latest --pull=always --env ENV_CONTAINER_CREATED_ON=$(date)
            docker exec -it liteobject-app bash
            export IMAGE_CREATED_ON=$(date)
            printenv
