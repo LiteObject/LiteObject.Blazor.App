@@ -5,8 +5,12 @@ FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS base
 WORKDIR /app
 EXPOSE 80
 
+ARG ARG_TEST_SECRET="arg: not available"
 ARG ARG_IMAGE_CREATED_ON="arg: not available"
+
 ENV ENV_CONTAINER_CREATED_ON="env: not available"
+ENV ENV_IMAGE_CREATED_ON=${ARG_IMAGE_CREATED_ON}
+ARG ENV_TEST_SECRET=${ARG_TEST_SECRET}
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src

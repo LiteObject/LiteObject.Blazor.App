@@ -42,6 +42,8 @@ jobs:
           #tags: ${{ steps.meta.outputs.tags }}
           #labels: ${{ steps.meta.outputs.labels }}
           labels: "org.label-schema.schemaVersion=1.0"
+          buildArgs: |
+            ARG_TEST_SECRET=${{ secrets.TEST_SECRET }}
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/liteobject-app:latest
           cache-from: type=registry,ref=${{ secrets.DOCKERHUB_USERNAME }}/liteobject-app:buildcache
           cache-to: type=registry,ref=${{ secrets.DOCKERHUB_USERNAME }}/liteobject-app:buildcache,mode=max
@@ -64,7 +66,7 @@ jobs:
          username: ${{ secrets.SSH_USER }}
          passphrase: ${{ secrets.SSH_PASSPHRASE }}
          key: ${{ secrets.SSH_KEY }}
-         port: 22
+         port: 22         
          script: |
            echo HelloWorld
            echo $WELCOME
